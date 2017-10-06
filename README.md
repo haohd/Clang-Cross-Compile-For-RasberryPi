@@ -80,7 +80,7 @@ After doing all above steps, now the sdk folder layout is like below.
 			└── usr
         
 ### 2.6. Create shell wrappers
-Do below commands before create shell wrappers 
+Do below commands before creating shell wrappers 
 
 	ln -s $BASE/raspbian-sdk/prebuilt/clang+llvm-3.4.2-x86_64-fedora20/bin/clang /usr/bin/clang
  	
