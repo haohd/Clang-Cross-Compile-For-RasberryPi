@@ -1,23 +1,23 @@
 # Clang Cross Compile For RasberryPi on Redhat 7
 
 ## 1. References 
-https://llvm.org/docs/HowToCrossCompileLLVM.html 
+	https://llvm.org/docs/HowToCrossCompileLLVM.html 
 
-https://medium.com/@zw3rk/making-a-raspbian-cross-compilation-sdk-830fe56d75ba
+	https://medium.com/@zw3rk/making-a-raspbian-cross-compilation-sdk-830fe56d75ba
 
 ## 2. Steps for setup 
 ### 2.1. Select where to install clang cross compile SDK 
 Example:
 
-  `export BASE=/opt`  
-  `mkdir -p $BASE/raspbian-sdk/{prebuilt,sysroot,tmp}`
+  	export BASE=/opt
+  	mkdir -p $BASE/raspbian-sdk/{prebuilt,sysroot,tmp}
   
 ### 2.2 Download pre-build clang+llvm
 From http://releases.llvm.org/download.html, dowload clang+llvm-3.4.2-x86_64-fedora20.xz
 	
-  	`cd $BASE/raspbian-sdk/prebuilt`
+  	cd $BASE/raspbian-sdk/prebuilt
   
-  	`wget http://releases.llvm.org/3.4.2/clang+llvm-3.4.2-x86_64-fedora20.xz -O $BASE/raspbian-sdk/prebuilt/clang+llvm-3.4.2-x86_64-fedora20.xz`
+  	wget http://releases.llvm.org/3.4.2/clang+llvm-3.4.2-x86_64-fedora20.xz -O $BASE/raspbian-sdk/prebuilt/clang+llvm-3.4.2-x86_64-fedora20.xz
 	
 Then extract this to `$BASE/raspbian-sdk/prebuilt`
 
@@ -26,7 +26,7 @@ Then extract this to `$BASE/raspbian-sdk/prebuilt`
 	rm -f clang+llvm-3.4.2-x86_64-fedora20.xz
   
 ### 2.3 Setup Linker and Other Utilities
-  	`cd $BASE/raspbian-sdk/tmp 
+  	cd $BASE/raspbian-sdk/tmp 
   
   	wget https://ftp.gnu.org/gnu/binutils/binutils-2.28.tar.bz2 
   
@@ -44,7 +44,7 @@ Then extract this to `$BASE/raspbian-sdk/prebuilt`
             --disable-werror \            
             --quiet
             
-  	make && make install`
+  	make && make install
 
 ### 2.4 Copy Headers and Libraries from RasberryPi to cross-compile machine (Redhat 7) 
   	cd $BASE/raspbian-sdk
