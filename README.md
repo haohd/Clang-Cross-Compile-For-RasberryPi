@@ -15,9 +15,9 @@ Example:
 ### 2.2 Download pre-build clang+llvm
 From http://releases.llvm.org/download.html, dowload clang+llvm-3.4.2-x86_64-fedora20.xz
 	
-  `cd $BASE/raspbian-sdk/prebuilt`
+  	`cd $BASE/raspbian-sdk/prebuilt`
   
-  `wget http://releases.llvm.org/3.4.2/clang+llvm-3.4.2-x86_64-fedora20.xz -O $BASE/raspbian-sdk/prebuilt/clang+llvm-3.4.2-x86_64-fedora20.xz`
+  	`wget http://releases.llvm.org/3.4.2/clang+llvm-3.4.2-x86_64-fedora20.xz -O $BASE/raspbian-sdk/prebuilt/clang+llvm-3.4.2-x86_64-fedora20.xz`
 	
 Then extract this to `$BASE/raspbian-sdk/prebuilt`
 
@@ -26,9 +26,9 @@ Then extract this to `$BASE/raspbian-sdk/prebuilt`
 	rm -f clang+llvm-3.4.2-x86_64-fedora20.xz
   
 ### 2.3 Setup Linker and Other Utilities
-  `cd $BASE/raspbian-sdk/tmp 
+  	`cd $BASE/raspbian-sdk/tmp 
   
-  wget https://ftp.gnu.org/gnu/binutils/binutils-2.28.tar.bz2 
+  	wget https://ftp.gnu.org/gnu/binutils/binutils-2.28.tar.bz2 
   
 	tar -xvf binutils-2.28.tar.bz2 
   
@@ -44,40 +44,40 @@ Then extract this to `$BASE/raspbian-sdk/prebuilt`
             --disable-werror \            
             --quiet
             
-  make && make install`
+  	make && make install`
 
 ### 2.4 Copy Headers and Libraries from RasberryPi to cross-compile machine (Redhat 7) 
-  `cd $BASE/raspbian-sdk
+  	cd $BASE/raspbian-sdk
   
-  rsync -rzLR --safe-links \
-      pi@raspberrypi_address:/usr/lib/arm-linux-gnueabihf \
-      pi@raspberrypi_address:/usr/lib/gcc/arm-linux-gnueabihf \
-      pi@raspberrypi_address:/usr/include \
-      pi@raspberrypi_address:/lib/arm-linux-gnueabihf \
-      ./sysroot/`
+  	rsync -rzLR --safe-links \
+	      pi@raspberrypi_address:/usr/lib/arm-linux-gnueabihf \
+	      pi@raspberrypi_address:/usr/lib/gcc/arm-linux-gnueabihf \
+	      pi@raspberrypi_address:/usr/include \
+	      pi@raspberrypi_address:/lib/arm-linux-gnueabihf \
+	      ./sysroot/
 
 Notes: On RasberryPi we also need to install 'rsync' before running above command. 
 
-  `sudo apt-get install rsync`
+  	sudo apt-get install rsync
   
 ### 2.5 Remove temp folder 
-  'cd $BASE/raspbian-sdk
+  	cd $BASE/raspbian-sdk
   
-  rm -rf tmp`
+  	rm -rf tmp
 
 After doing all above steps, now the sdk folder layout is like below. 
 
-    ├── prebuilt
-	|   |── clang+llvm-3.4.2-x86_64-fedora20
-	│   ├── arm-linux-gnueabihf
-	│   ├── bin
-	│   ├── include
-	│   ├── lib
-	│   ├── libexec
-	│   └── share
-	└── sysroot
-		├── lib
-		└── usr
+	    ├── prebuilt
+		|   |── clang+llvm-3.4.2-x86_64-fedora20
+		│   ├── arm-linux-gnueabihf
+		│   ├── bin
+		│   ├── include
+		│   ├── lib
+		│   ├── libexec
+		│   └── share
+		└── sysroot
+			├── lib
+			└── usr
         
 ### 2.6. Create shell wrappers
 Do below commands before create shell wrappers 
