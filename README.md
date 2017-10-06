@@ -12,7 +12,7 @@ Example:
   	export BASE=/opt
   	mkdir -p $BASE/raspbian-sdk/{prebuilt,sysroot,tmp}
   
-### 2.2 Download pre-build clang+llvm
+### 2.2. Download pre-build clang+llvm
 From http://releases.llvm.org/download.html, dowload clang+llvm-3.4.2-x86_64-fedora20.xz
 	
   	cd $BASE/raspbian-sdk/prebuilt
@@ -25,7 +25,7 @@ Then extract this to `$BASE/raspbian-sdk/prebuilt`
 	tar -xvf clang+llvm-3.4.2-x86_64-fedora20.xz
 	rm -f clang+llvm-3.4.2-x86_64-fedora20.xz
   
-### 2.3 Setup Linker and Other Utilities
+### 2.3. Setup Linker and Other Utilities
   	cd $BASE/raspbian-sdk/tmp 
   
   	wget https://ftp.gnu.org/gnu/binutils/binutils-2.28.tar.bz2 
@@ -46,7 +46,7 @@ Then extract this to `$BASE/raspbian-sdk/prebuilt`
             
   	make && make install
 
-### 2.4 Copy Headers and Libraries from RasberryPi to cross-compile machine (Redhat 7) 
+### 2.4. Copy Headers and Libraries from RasberryPi to cross-compile machine (Redhat 7) 
   	cd $BASE/raspbian-sdk
   
   	rsync -rzLR --safe-links \
@@ -60,7 +60,7 @@ Notes: On RasberryPi we also need to install 'rsync' before running above comman
 
   	sudo apt-get install rsync
   
-### 2.5 Remove temp folder 
+### 2.5. Remove temp folder 
   	cd $BASE/raspbian-sdk
   
   	rm -rf tmp
@@ -86,7 +86,7 @@ Do below commands before create shell wrappers
  	
 	ln -s /usr/bin/clang $BASE/raspbian-sdk/prebuilt/bin/clang
 
-#### 2.6.1 Create file CC script "arm-linux-gnueabihf-clang"
+#### 2.6.1. Create CC script `arm-linux-gnueabihf-clang`
 	cd $BASE
 	vi arm-linux-gnueabihf-clang
 	
@@ -105,7 +105,7 @@ Do below commands before create shell wrappers
 	#------------------------------------------------------------------------`
 	
 	
-#### 2.6.2 Create file LD script "arm-linux-gnueabihf-clang-ld"
+#### 2.6.2. Create LD script `arm-linux-gnueabihf-clang-ld`
 	cd $BASE
 	vi arm-linux-gnueabihf-clang-ld
 	
@@ -124,15 +124,15 @@ Do below commands before create shell wrappers
 		 "$@"	
 	#------------------------------------------------------------------------
 	
-#### 2.6.3. Create soft link
+#### 2.6.3. Create soft links
 	cd $BASE
 	chmod +x arm-linux-gnueabihf-clang
 	chmod +x arm-linux-gnueabihf-clang-ld 
 	ln -s $BASE/arm-linux-gnueabihf-clang /usr/bin/arm-linux-gnueabihf-clang
 	ln -s $BASE/arm-linux-gnueabihf-clang-ld /usr/bin/arm-linux-gnueabihf-clang-ld
 
-### 2.7 Test
-Create file hello.c 
+### 2.7. Test
+Create file `hello.c`
 
 	#include <stdio.h>
 	int
@@ -141,8 +141,8 @@ Create file hello.c
 	  return 0;
 	}
 
-Compile 'hello.c': 
+Compile `hello.c`: 
 
 	arm-linux-gnueabihf-clang-ld -o hello hello.c
 	
-Copy execurable file "hello" to Raspberry machine for execution. 
+Copy executable file `hello` to Raspberry machine for execution. 
