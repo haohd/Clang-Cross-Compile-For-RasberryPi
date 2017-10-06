@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BASE="/opt/raspbian-sdk"
+SYSROOT="${BASE}/sysroot"
+TARGET=arm-linux-gnueabihf
+COMPILER_PATH="${SYSROOT}/usr/lib/gcc/${TARGET}/4.9"
+exec env COMPILER_PATH="${COMPILER_PATH}" \
+	 "${BASE}/prebuilt/bin/clang" --target=${TARGET} \
+					 --sysroot="${SYSROOT}" \
+					 -isysroot "${SYSROOT}" \
+					 --gcc-toolchain="${BASE}/prebuilt/bin" \
+					 "$@"
