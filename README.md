@@ -17,11 +17,10 @@ From http://releases.llvm.org/download.html, dowload clang+llvm-3.4.2-x86_64-fed
 	
   	cd $BASE/raspbian-sdk/prebuilt
   
-  	wget http://releases.llvm.org/3.4.2/clang+llvm-3.4.2-x86_64-fedora20.xz -O $BASE/raspbian-sdk/prebuilt/clang+llvm-3.4.2-x86_64-fedora20.xz
+  	wget http://releases.llvm.org/3.4.2/clang+llvm-3.4.2-x86_64-fedora20.xz 
 	
 Then extract this to `$BASE/raspbian-sdk/prebuilt`
 
-	cd $BASE/raspbian-sdk/prebuilt
 	tar -xvf clang+llvm-3.4.2-x86_64-fedora20.xz
 	rm -f clang+llvm-3.4.2-x86_64-fedora20.xz
   
